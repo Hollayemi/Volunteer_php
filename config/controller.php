@@ -116,6 +116,7 @@ if(isset($_GET['loc'])){
 
     
 if(isset($_POST['loginBtn'])){
+    echo "fdfd";
 	$myInputEmail=testInput($_POST['Email']);
 	$inputPassword=testInput($_POST['Password']);
     $result =   loginChkDara($conn,$myInputEmail);

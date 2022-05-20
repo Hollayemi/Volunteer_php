@@ -1,37 +1,84 @@
-$(function() {
-    $(".btn").click(function() {
-       $(".form-signin").toggleClass("form-signin-left");
-     $(".form-signup").toggleClass("form-signup-left");
-     $(".frame").toggleClass("frame-long");
-     $(".signup-inactive").toggleClass("signup-active");
-     $(".signin-active").toggleClass("signin-inactive");
-     $(".forgot").toggleClass("forgot-left");   
-     $(this).removeClass("idle").addClass("active");
-    });
- });
- 
- $(function() {
-    $(".btn-signup").click(function() {
-   $(".nav").toggleClass("nav-up");
-   $(".form-signup-left").toggleClass("form-signup-down");
-   $(".success").toggleClass("success-left"); 
-   $(".frame").toggleClass("frame-short");
-    });
- });
- 
- $(function() {
-    $(".btn-signin").click(function() {
-   $(".btn-animate").toggleClass("btn-animate-grow");
-   $(".welcome").toggleClass("welcome-left");
-   $(".cover-photo").toggleClass("cover-photo-down");
-   $(".frame").toggleClass("frame-short");
-   $(".profile-photo").toggleClass("profile-photo-down");
-   $(".btn-goback").toggleClass("btn-goback-up");
-   $(".forgot").toggleClass("forgot-fade");
-    });
- });
+$(document).ready(()=>{
+   $('#signinBtn').click(()=>{
+      $('#signupBox').hide()
+      $('#signinBox').show()
+      $('#forgotP').show();
+   })
+   $('#signupBtn').click(()=>{
+      $('#signupBox').show()
+      $('#signinBox').hide()
+      $('#forgotP').hide();
+   })
+})
 
- var myLink = document.querySelector('a[href="#"]');
-    myLink.addEventListener('click', function(e) {
-        e.preventDefault();
-    });
+   //  j
+    $('#register-btn').click((e) => {
+      e.preventDefault()
+      if ($("#register-form")[0].checkValidity()) {
+         e.preventDefault()
+          $('#register-btn').val('Please wait...')
+          if ($('#r-password').val() !== $('#cpassword').val()) {
+              $('#register-btn').val('Sign Up')
+              $('#passMsg').text("Passwords do not match")
+          } else {
+              $('#passMsg').text("")
+              $.ajax({
+                  url: 'config/authCheck.php',
+                  method: 'post',
+                  data: $('#register-form').serialize() + "&action=register",
+                  success: function(response) {
+                     console.log(response);
+                     if (response === 'Registered') {
+                     //   window.location = "home.php"
+                     } else {
+                        $('#regAlert').html(response)
+                        $('#register-btn').val('Sign Up')
+                     }
+                  }
+              })
+          }
+      }
+
+  })
+
+  // Login script
+  $('#login-btn').click((e)=>{
+     e.preventDefault();
+      // if($('#login-form')[0].checkValidity()){
+      //     e.preventDefault()
+      //     $('#login-btn').val('Please wait...')
+      //     $.ajax({
+      //         url:'assets/php/controller.php',
+      //         method:'post',
+      //         data:$('#login-form').serialize() + '&action=login',
+      //         success:(res)=>{
+                  
+      //             if(res === 'login'){
+      //                 window.location = 'home.php';
+      //             }else{
+      //                 $('#loginAlert').html(res)
+      //                 $('#login-btn').val('Sign in')
+      //             }
+      //         }
+      //     })
+      // }
+      console.log('here');
+  })
+
+  // forgot script
+  $('#forgot-btn').click(e=>{
+      if($('#forgot-form')[0].checkValidity()){
+          e.preventDefault()
+          $('#forgot-btn').val('Please wait...')
+          $.ajax({
+              url:'assets/php/controller.php',
+              method:'post',
+              data:$('#forgot-form').serialize()+'&action=forgot',
+              success:function(res){
+                  $('#forgot-btn').val('Reset Password')
+                  $('#forgot-form')[0].reset()
+                  $('#forgotAlert').html(res)
+              }
+          })
+      }
+  })

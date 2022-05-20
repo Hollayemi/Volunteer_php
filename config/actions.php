@@ -7,7 +7,6 @@
         $data = htmlspecialchars($data);
         return $data;
     }
-
         // Message 
     function displayMessage($type,$msg){
         return '<div class="alert alert-'.$type.' alert-dismissible">
@@ -15,19 +14,21 @@
         <strong class="text-center">'.$msg.'</strong>
         </div>';
     }
-
-    function register($conn,$username,$email,$password,$phone, $token)
-    {
-        $sql = "INSERT INTO users(username,email,password, phone, token) VALUES(:username,:email,:password,:phone,:token)";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute(['username'=>$username, 'email'=>$email,'password'=>$password, 'phone'=>$phone,'token'=>$token]);
-        return true;
-    }
+    
+    
+    function createNewUser($conn,$email,$password,$token)
+        {
+            $sql = "INSERT INTO auth (email,password,authToken) VALUES(?,?,?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$email, $password, $token]);
+            return true;
+        }
+    
 
     // check if email exist
     function userExist($conn,$email)
     {
-        $sql = "SELECT email FROM users WHERE email = :email";
+        $sql = "SELECT email FROM auth WHERE email = :email";
         $stmt = $conn->prepare($sql);
         $stmt->execute(['email'=>$email]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
