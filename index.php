@@ -8,7 +8,7 @@
         <link href='auth/index.css' rel='stylesheet'>
     </head>
     <body className='snippet-body'>
-        <div class="container2" style="height:100;">
+        <div class="container2" style="height:100%;">
             <div class="frame">
                 <div class="nav">
                     <ul class="links">
@@ -33,7 +33,7 @@
                         
                         </form>
                     </div>
-                    <div id="signupBox">
+                    <div id="signupBox" style="display:none;">
                         <form class="form-signup" id="register-form" method="POST">
                             <div id="passMsg2"></div>
                             <label for="email">Full Name</label>

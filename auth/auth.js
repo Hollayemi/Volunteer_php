@@ -1,5 +1,6 @@
 $(document).ready(()=>{
    $('#signupBox').hide()
+   $("#signupBox").css("display", "none")
    $('#signinBtn').click(()=>{
       $('#signupBox').hide()
       $('#signinBox').show()
