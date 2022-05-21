@@ -8,7 +8,7 @@
         <link href='auth/index.css' rel='stylesheet'>
     </head>
     <body className='snippet-body'>
-        <div class="container2">
+        <div class="container2" style="height:100;">
             <div class="frame">
                 <div class="nav">
                     <ul class="links">
