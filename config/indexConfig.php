@@ -316,7 +316,7 @@ function orderedprods($conn,$shopnick,$buyerID,$sKey,$code,$address)
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMPT;
 use PHPMailer\PHPMailer\Exception; 
-function MyMailer($subject,$to,$message,$token){
+function MyMailer($subject,$to,$message){
     require '../Mailer2/PHPMailer.php';
     require '../Mailer2/Exception.php';
     require '../Mailer2/SMTP.php';
@@ -324,17 +324,17 @@ function MyMailer($subject,$to,$message,$token){
     $email  ='stephanyemmitty@gmail.com';
     try{
         $mail->isSMTP();
-        $mail->Host = 'smtp.ionos.com';
+        $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->SMTPDebug  = 0;
-        $mail->Username   = "support@kemon-market.com";                    
-        $mail->Password   = "kemonSupport0123";                    
+        $mail->Username   = "Stephanyemmitty@gmail.com";                    
+        $mail->Password   = "sholly0123";                    
         $mail->AddEmbeddedImage('../img/kemon.png','myImg');          
         $mail->AddEmbeddedImage('../img/chatStep.PNG','me');   
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
         $mail->Port       = 587;
 
-        $mail->setFrom("support@kemon-market.com",'Kemon Market');
+        $mail->setFrom("stephanyemmitty@gmail.com",'Volunteer');
         $mail->addAddress($to);
 
         $mail->isHTML(true);

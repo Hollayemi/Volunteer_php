@@ -1,13 +1,13 @@
 <?php
     require_once "db.php";
-
     function testInput($data){
         $data = trim($data);
         $data = stripslashes($data); 
         $data = htmlspecialchars($data);
         return $data;
     }
-        // Message 
+    
+    // Message
     function displayMessage($type,$msg){
         return '<div class="alert alert-'.$type.' alert-dismissible">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -16,14 +16,23 @@
     }
     
     
-    function createNewUser($conn,$email,$password,$token)
+    function createNewUser($conn,$email,$password,$name,$token)
         {
-            $sql = "INSERT INTO auth (email,password,authToken) VALUES(?,?,?)";
+            $sql = "INSERT INTO auth (email,password,fullname,authToken) VALUES(?,?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt->execute([$email, $password, $token]);
+            $stmt->execute([$email, $password, $name, $token]);
             return true;
         }
     
+
+    // editUser
+    function editUser($conn,$name,$password,$email,$id)
+    {
+        $sql    = "UPDATE auth SET fullname=?,password=?, email=? WHERE id=?";
+        $stmt   = $conn->prepare($sql);
+        $stmt->execute([$name,$password,$email,$id]);
+        return true;
+    }
 
     // check if email exist
     function userExist($conn,$email)
@@ -38,7 +47,7 @@
     // login existing user
     function login($conn,$email)
     {
-        $sql = "SELECT email, password FROM users WHERE email = :email";
+        $sql = "SELECT id, email, password FROM auth WHERE email = :email";
         $stmt = $conn->prepare($sql);
         $stmt->execute(['email'=>$email]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -48,7 +57,7 @@
     // retreiving current users detatil
     function currentUser($conn,$email)
     {
-        $sql = "SELECT * FROM users WHERE email = :email";
+        $sql = "SELECT * FROM auth WHERE email = :email";
         $stmt = $conn->prepare($sql);
         $stmt->execute(['email'=>$email]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -69,7 +78,7 @@
     //reset password
     function resetPassword($conn,$token)
     {
-        $sql = "SELECT * FROM users WHERE token =?";
+        $sql = "SELECT * FROM auth WHERE authToken =?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$token]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -78,11 +87,11 @@
 
 
     // Update Password
-    function updatePassword($conn,$token,$password)
+    function updatePassword($conn,$token,$password,$oldToken)
     {
-        $sql = 'UPDATE users SET token=?,password=? WHERE token=?';
+        $sql = 'UPDATE auth SET authToken=?,password=? WHERE authToken=?';
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$token,$password,$token]);
+        $stmt->execute([$token,$password,$oldToken]);
         return true;
     
     }
