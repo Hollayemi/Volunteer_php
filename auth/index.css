@@ -477,6 +477,6 @@ transform: rotate(180deg);
 
 @media screen and (max-width:500px) {
   .frame{
-    width:96%;
+    width:90%;
   }
 }
