@@ -8,10 +8,8 @@
         <link href='index.css' rel='stylesheet'>
     </head>
     <body className='snippet-body'>
-        <div class="container">
+        <div class="container2" style="height:100%;">
             <div class="frame">
-                
-                    
                 <form class="form-signup fp_Page" method="POST">
                     <div id="passMsg"></div>
                     <div class="fp_emailInput">

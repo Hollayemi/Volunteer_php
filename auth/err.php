@@ -16,7 +16,7 @@
         <link href='index.css' rel='stylesheet'>
     </head>
     <body className='snippet-body'>
-        <div class="container">
+        <div class="container2" style="height:100%;">
             <h5><?php echo $error ?> </h5>
             <a href="../">Back to login</a>
         </div>

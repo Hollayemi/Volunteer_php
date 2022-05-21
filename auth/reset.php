@@ -19,7 +19,7 @@
         <link href='index.css' rel='stylesheet'>
     </head>
     <body className='snippet-body'>
-        <div class="container">
+        <div class="container2" style="height:100%;">
             <div class="frame">                    
                 <form class="form-signup fp_Page" id="reset-form" method="POST">
                     <div class="derivedEmail"><?php echo $email; ?></div>
