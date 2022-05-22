@@ -1,0 +1,29 @@
+$(document).ready(()=>{
+    $('#editForm').hide();
+    $('#deleteForm').hide();
+    $('.Submitted').hide()
+    $('#editButton').click(()=>{
+        $('.dashboard-content').hide()
+        $('#editForm').show();
+        $('#deleteForm').hide();
+    })
+    $('#formBack').click((e)=>{
+        e.preventDefault();
+        $('#editForm').hide();
+        $('.dashboard-content').show()
+    })
+    $('#goBack').click((e)=>{
+        e.preventDefault();
+        $('#editForm').hide();
+        $('.Submitted').hide()
+        $('.dashboard-content').show()
+    })
+    $('#deleteButton').click(()=>{
+        $('#editForm').hide();
+        $('.dashboard-content').hide()
+        $('#deleteForm').show();
+    })
+    $('#dropMenu').click(()=>{
+        $('.myDropDown').toggleClass('hideMenu')
+    })
+})

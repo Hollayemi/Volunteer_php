@@ -26,7 +26,7 @@
                 echo "Password too short";
             }
         }else{
-            echo "All field are required";
+            echo "All fieldS are required";
         }
     };
 
@@ -125,7 +125,6 @@
         if($currentUser){
             if(strlen($password) > 6){
                 if(updatePassword($conn,$token,$hashPwd,$myToken)){
-                    $_SESSION['user'] = $email;
                     echo "done";
                 }else{
                     echo "server error";

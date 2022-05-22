@@ -1,0 +1,217 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.dashboardBox{
+    position: absolute;
+    width:100%;
+    height:100%;
+}
+.flex{
+    display: flex;
+    height:100%;
+}
+.smallSide{
+    height:100%;
+    position: fixed;
+    top:0px;
+    left:0px;
+    width:80px;
+    background-color: #0090cc;
+    text-align: center;
+    box-shadow: 5px 5px 5px rgba(100, 99, 99, 0.532);
+}
+.smallSide img{
+    width:60px;
+    
+    height:60px;
+    margin-top:50px;
+}
+
+.smallSide .bottom{
+    position: absolute;
+    bottom:60px;
+    width: 100%;
+    left:1px;
+    color: #e2e2e2;
+    text-decoration: none;
+}
+.bottom:hover{
+    color: rgb(174, 179, 183);
+}
+.bigSide{
+    width:calc( 100% - 80px );
+    margin-left:80px;
+    padding-top:70px!important;
+    background-color: #003952;
+    position: relative;
+    flex-flow: column;
+}
+.dasboardTop{
+    top:0;
+    left:0px;
+    width:100%;
+    border-bottom: 1px solid #005b82;
+    position: fixed;
+    height:40px;
+    text-align: right;
+    color:rgb(161, 161, 161);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right:16px;
+    background-color: #004d6e;
+}
+
+.dashboard-content, .Submitted{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.dashboard-content h5{
+    color: bisque;
+    font-size:15px;
+}
+.Submitted h5{
+    color: rgb(99, 255, 99);
+    font-size:15px;
+}
+.dashboard-content button, .Submitted button, .formBack{
+    width:150px;
+    height:30px;
+    margin-top:10px;
+    border: none;
+    background: #0090cc;
+    color: white;
+    cursor: pointer;
+}
+.addAdminForm{
+    display: flex;
+    justify-content: center;
+}
+.editInfo{
+    width:90%;
+    max-width:350px;
+}
+.formBack{
+    width:100%;
+    margin-top:5px;
+}
+.editInfo form{
+    display: flex;
+    flex-flow: column;
+    margin-top:10px;
+    width:100%;
+}
+.editInfo input{
+    width:100%;
+    max-width:350px;
+    height: 35px;
+    margin-bottom:13px;
+    background-color: transparent;
+    color:white;
+    padding-left:10px;
+    font-size:15px;
+    border: none;
+    border-radius:5px;
+    border: 1px solid rgb(181, 180, 180);
+}
+#passMsg3{
+    width:100%;
+    text-align: center;
+    color: #6dd3ff;
+    padding-bottom:15;
+    margin-bottom:10px;
+}
+
+.editInfo input[type="submit"]{
+    background-color: #fff;
+    color: #0090cc;
+}
+.myCard{
+    display: flex;
+    justify-content: center;
+    margin-bottom:15px;
+}
+.userCard{
+    width:200px;
+    height:150px;
+    display:flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    margin:5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.userCard img{
+    width:60px;
+    height:60px;
+}
+.myDropDown{
+    position: fixed;
+    left:60px;
+    bottom:60px;
+    z-index:100000;
+    padding:15px 10px;
+    width:150px;
+    background-color:#e2e2e2;
+    color: #0090cc;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.myDropDown li{
+    line-height:30px;
+    cursor: pointer;
+}
+.hideMenu{
+    display: none;
+}
+.myDropDown h5{
+    position: absolute;
+    top:0px;
+    left:0px;
+    height:27px;
+    width:100%;
+    text-align: center;
+    line-height:27px;
+    border-bottom: 1px solid rgb(163, 163, 163);
+}
+.removeAdmin{
+    background-color: rgb(255, 6, 6) !important;
+    color: #fff !important;
+}
+
+/* style Table */
+.myTable{
+    margin:1px 10px ;
+    overflow:auto;
+    display: flex;
+    justify-content: center;
+}
+table {
+    width:100%;
+    max-width:600px;
+    overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table#t01 th	{
+    background-color: black;
+    color: white;
+}

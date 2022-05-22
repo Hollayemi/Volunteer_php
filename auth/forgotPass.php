@@ -1,3 +1,6 @@
+<?php
+    $by = $_GET['by']
+?>
 <!doctype html>
 <html>
     <head>
@@ -10,7 +13,7 @@
     <body className='snippet-body'>
         <div class="container2" style="height:100%;">
             <div class="frame">
-                <form class="form-signup fp_Page" method="POST">
+                <form class="admin-signup fp_Page" method="POST">
                     <div id="passMsg"></div>
                     <div class="fp_emailInput">
                         <label for="email">Email</label>
@@ -18,7 +21,14 @@
                     </div>
                     <button id="register-btn3" type="submit" name="signup" class="btn-signup">Send Email</button>
                     <div class="fp_back" id="forgotP">
-                        <a href="../">Back to login</a>
+                        <?php 
+                            if($by == 'admin1'){
+                                echo '<a href="../Admin">Back to login</a>';
+                            }else{
+                                echo '<a href="../">Back to login</a>';
+                            }
+                        ?>
+                        
                     </div>
                 </form>
                     
