@@ -63,6 +63,14 @@
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row;
     }
+    function currentAdmin($conn,$email)
+    {
+        $sql = "SELECT * FROM vol_admin WHERE email = :email";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['email'=>$email]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row;
+    }
 
 
     // forgot password
@@ -108,6 +116,43 @@
 
 
 
+    
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMPT;
+use PHPMailer\PHPMailer\Exception; 
+function MyMailer($subject,$to,$message){
+    require '../Mailer2/PHPMailer.php';
+    require '../Mailer2/Exception.php';
+    require '../Mailer2/SMTP.php';
+    $mail = new PHPMailer(true);
+    $email  ='stephanyemmitty@gmail.com';
+    try{
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->SMTPDebug  = 0;
+        $mail->Username   = "Stephanyemmitty@gmail.com";                    
+        $mail->Password   = "sholly0123";                    
+        // $mail->AddEmbeddedImage('../img/kemon.png','myImg');          
+        // $mail->AddEmbeddedImage('../img/chatStep.PNG','me');   
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
+        $mail->Port       = 587;
+
+        $mail->setFrom("stephanyemmitty@gmail.com",'Volunteer');
+        $mail->addAddress($to);
+
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $message;
+        if($mail->send()){
+            echo "sent";
+        }
+    }catch(Exception $e){
+        echo 'Oops something went wrong! please try again';
+    }
+
+}
 
     
 ?>

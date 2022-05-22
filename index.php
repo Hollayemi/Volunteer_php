@@ -29,7 +29,7 @@
                             <button id="login-btn" class="btn-signin">Sign in</button>
                         </div>
                         
-                        <a href="auth/forgotPass.php" class="forgot">Forgot your password?</a>
+                        <a href="auth/forgotPass.php?by=user" class="forgot">Forgot your password?</a>
                         
                         </form>
                     </div>

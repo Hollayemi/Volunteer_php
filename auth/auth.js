@@ -69,22 +69,28 @@ $('#login-btn').click((e)=>{
 })
 
   // forgot script
-  $('#forgot-btn').click(e=>{
+   $('#forgot-btn').click(e=>{
       if($('#forgot-form')[0].checkValidity()){
-          e.preventDefault()
-          $('#forgot-btn').val('Please wait...')
-          $.ajax({
-              url:'assets/php/controller.php',
-              method:'post',
-              data:$('#forgot-form').serialize()+'&action=forgot',
-              success:function(res){
+         e.preventDefault()
+         $('#forgot-btn').val('Please wait...')
+         $.ajax({
+            url:'../config/authCheck.php',
+            method:'post',
+            data:$('#forgot-form').serialize()+'&action=forgot',
+            success:function(res){
+               console.log(res);
+               $('#passMsg').text(res)
+               if(res === 'logged in'){
+                     // window.location = 'Dashboard';
+               }else{
                   $('#forgot-btn').val('Reset Password')
                   $('#forgot-form')[0].reset()
-                  $('#forgotAlert').html(res)
-              }
+               }
+               // $('#forgotAlert').html(res)
+            }
           })
       }
-  })
+   })
 
 
 //   edit credentials

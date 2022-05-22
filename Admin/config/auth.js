@@ -68,24 +68,25 @@ $('#login-btn').click((e)=>{
    console.log('here');
 })
 
-  // forgot script
-   $('#deleteAdmin-btn').click(e=>{
-      e.preventDefault();
-      if($('#deleteAdmin-form')[0].checkValidity()){
-          e.preventDefault()
-          $('#deleteAdmin-btn').val('Please wait...')
-          $.ajax({
-              url:'config/authCheck.php',
-              method:'post',
-              data:$('#deleteAdmin-form').serialize()+'&action=deleteAdmin',
-              success:function(res){
-                  $('#deleteAdmin-btn').val('Reset Password')
-                  $('#deleteAdmin-form')[0].reset()
-                  $('#deleteAdmin').html(res)
-              }
-          })
-      }
-  })
+//forgot script
+$('#deleteAdmin-btn').click((e)=>{
+   alert('jhjo')
+   e.preventDefault();
+   // if($('#deleteAdmin-form')[0].checkValidity()){
+   //     e.preventDefault()
+   //     $('#deleteAdmin-btn').val('Please wait...')
+   //     $.ajax({
+   //         url:'config/authCheck.php',
+   //         method:'post',
+   //         data:$('#deleteAdmin-form').serialize()+'&action=deleteAdmin',
+   //         success:function(res){
+   //             $('#deleteAdmin-btn').val('Reset Password')
+   //             $('#deleteAdmin-form')[0].reset()
+   //             // $('#deleteAdmin').html(res)
+   //         }
+   //     })
+   // }
+})
 
 
 //   edit credentials

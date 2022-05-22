@@ -57,7 +57,7 @@
                             <input list="browsers" name="getAdmin">
                                 <?php require('admins.php') ?></php>
                             <input type="submit" id="deleteAdmin-btn " class="removeAdmin" name="addNew" value="Remove">
-                            <button class="formBack" id="formBack">Back</button>
+                            <button class="formBack" id="formBack2">Back</button>
                         </form>
                     </div>
                 </div>
