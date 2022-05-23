@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2022 at 07:41 PM
+-- Generation Time: May 23, 2022 at 02:53 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -33,16 +33,19 @@ CREATE TABLE `auth` (
   `password` text NOT NULL,
   `isAdmin` int(20) DEFAULT NULL,
   `authToken` text NOT NULL,
-  `fullname` text NOT NULL
+  `fullname` text NOT NULL,
+  `status` text CHARACTER SET utf8 NOT NULL DEFAULT 'active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `auth`
 --
 
-INSERT INTO `auth` (`email`, `id`, `password`, `isAdmin`, `authToken`, `fullname`) VALUES
-('savy@gmail.com', 8, '$2y$10$d55UfbYnx5ATLA0v2bfi4OM5uAOQjiZxV0BQvvSPo5xudSvTeGa0K', NULL, '6104297347c8c0b8a06080a75f691a8068c280564a69d194d867dbf0dba0c3e41a7ad9874632b4c9c59a7011334b9926a70f', 'Savy'),
-('Holla@gmail.com', 10, '$2y$10$9OllomUjat09VQJ/fKPHTOuF21V.TPcKUbiF3Tg3VNLi/NmoTV.YW', NULL, '604c9c20d436881f20e8fc5c3e3f87e9bbe02c185c5f34e06ec619de6d8a2c20dc29b8777f713bce2b65bb78d04c4f638039', 'stephan Olayemi');
+INSERT INTO `auth` (`email`, `id`, `password`, `isAdmin`, `authToken`, `fullname`, `status`) VALUES
+('test@test.com', 13, '$2y$10$DnIsmnetF0AwKcTeLrCI9OQZJJpoIqZuRSkpwVbUEzwPBgcwnh6zK', NULL, '8b4f5e71ae9f855fb30e851ebd1b303d78154bf056ea11a19cdae70ac9ee251619689a815eb8930288fa1918c8a124f64099', 'test1', 'deactivated'),
+('test2@test.com', 14, '$2y$10$rKxdNa0Ow958HnNMQJTWtepWdvqMcVyy0Eq9uGhc2gSr1tdsrJhV6', NULL, 'c02340f0955dccc8fb544d4f57b2e91bb2a826a0a0bedd6e36c362f78928f7effca9af0a75d06d6eb9db1b027f7306d1b617', 'test2', 'deactivated'),
+('test3@test.com', 15, '$2y$10$urPtoYmy1mwNUfT.LUTfduN.urEycBzI70npMGBoNDvgk/P1344rC', NULL, 'c3db1d0aca916cab778a0e072a7189706a058d6c15b6443a498d998334d0c7dab07e78cbac018f68d8a89d64ad98b7ecc242', 'test3', 'active'),
+('test4@test.com', 16, '$2y$10$7EF5Mp5I.d/I1.xYkNB13.iHNep6k2Vulkuj3gelNgbej3wfKgAf6', NULL, '134bfc502ee1847df7d14a627471e718b99861e1308c57497577bbd627d01550b78bc494e584e4b512be6a65ea17a89c498a', 'test4', 'active');
 
 -- --------------------------------------------------------
 
@@ -63,9 +66,7 @@ CREATE TABLE `vol_admin` (
 --
 
 INSERT INTO `vol_admin` (`id`, `password`, `authToken`, `email`, `fullname`) VALUES
-(1, '$2y$10$d55UfbYnx5ATLA0v2bfi4OM5uAOQjiZxV0BQvvSPo5xudSvTeGa0K', 'jhndisuh9ie899423u8hr9823u9r39h27f394ur39487r394ufbuo34f', 'admin@admin.com', 'Admin'),
-(2, '$2y$10$L5AUd7ph70Ky8aHtlc6lUehKopJyekZc1y.H.LquNn6pxB6We3HBy', 'da9f0a2cbd436e000639968253d937d7ee709da9a750d7d6365a1a989ba5feff1427721449b30256065c1387645368b677e1', 'Holla@gmail.com', 'Hollayemi'),
-(3, '$2y$10$P1NoD/GdX4NaLzcyUZvqPuCrA4GbMYtjVA3BchxIsSMFCdUayIuWu', 'b27205e4bd12dc212f08be543bdc7e6fc618e998a6c65b2ac5bddf11150bbffd05ba866ca19b25fad9c8b3114e89e13c9d7a', 'Holla2@gmail.com', 'Hollayemi');
+(1, '$2y$10$rKxdNa0Ow958HnNMQJTWtepWdvqMcVyy0Eq9uGhc2gSr1tdsrJhV6', 'jfhakhbaUGVDGAdvjdvfuavdjfgakdfvudyfgvueyweuyvfyvauvdfuagvkdufhvakdf', 'admin@admin.com', 'Admin');
 
 --
 -- Indexes for dumped tables
@@ -91,7 +92,7 @@ ALTER TABLE `vol_admin`
 -- AUTO_INCREMENT for table `auth`
 --
 ALTER TABLE `auth`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `vol_admin`
