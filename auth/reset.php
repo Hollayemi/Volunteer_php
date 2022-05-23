@@ -1,6 +1,7 @@
 <?php
     require('../config/actions.php');
     $token = $_GET['token'];
+    $by = $_GET['by'];
     $myTokenFetch = resetPassword($conn,$token);
     if($myTokenFetch['email']){
         $email = $myTokenFetch['email'];
@@ -33,6 +34,7 @@
                             <input class="form-styling" type="password" name="cpass" placeholder=""/>
                         </div>
                         <input type="hidden" name="myToken" value=<?php echo $token ?> />
+                        <input type="hidden" name="getAccess" value=<?php echo $by ?> />
                     <button id="reset-btn" type="submit" name="signup" class="btn-signup">Reset</button>
                 </form>
                     

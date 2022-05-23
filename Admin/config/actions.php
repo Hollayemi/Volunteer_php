@@ -95,6 +95,14 @@
         return true;
     
     }
+    function deactivateUser($conn,$id,$to)
+    {
+        $sql = 'UPDATE auth SET status=:_to WHERE id=:id';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['id'=>$id, '_to'=>$to]);
+        return true;
+    
+    }
     function afterVerify($conn,$email)
     {
         $sql = 'UPDATE users SET token="" WHERE email=:email';

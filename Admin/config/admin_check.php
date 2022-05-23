@@ -30,7 +30,7 @@
         $checkExistence = adminExist($conn,$email);
 
         if(strlen($name) > 1 && strlen($email) > 1){
-            if(strlen($password) > 6){
+            if(strlen($password) > 5){
                 if(!$checkExistence){
                     if(createNewAdmin($conn, $email, $hashPwd, $name, $token)){
                         echo "Registered";

@@ -47,7 +47,7 @@
     // login existing user
     function login($conn,$email)
     {
-        $sql = "SELECT id, email, password FROM auth WHERE email = :email";
+        $sql = "SELECT * FROM auth WHERE email = :email";
         $stmt = $conn->prepare($sql);
         $stmt->execute(['email'=>$email]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -92,12 +92,29 @@
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row;
     }
+    function resetPassword2($conn,$token)
+    {
+        $sql = "SELECT * FROM vol_admin WHERE authToken =?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$token]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row;
+    }
+
 
 
     // Update Password
     function updatePassword($conn,$token,$password,$oldToken)
     {
         $sql = 'UPDATE auth SET authToken=?,password=? WHERE authToken=?';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$token,$password,$oldToken]);
+        return true;
+    
+    }
+    function updatePassword2($conn,$token,$password,$oldToken)
+    {
+        $sql = 'UPDATE vol_admin SET authToken=?,password=? WHERE authToken=?';
         $stmt = $conn->prepare($sql);
         $stmt->execute([$token,$password,$oldToken]);
         return true;
@@ -129,18 +146,18 @@ function MyMailer($subject,$to,$message){
     $email  ='stephanyemmitty@gmail.com';
     try{
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
+        $mail->Host = 'smtp.mailtrap.io';
         $mail->SMTPAuth = true;
         $mail->SMTPDebug  = 0;
-        $mail->Username   = "Stephanyemmitty@gmail.com";                    
-        $mail->Password   = "sholly0123";                    
+        $mail->Username   = "9ce03db4a6eed7";                    
+        $mail->Password   = "25912963b0e734";                    
         // $mail->AddEmbeddedImage('../img/kemon.png','myImg');          
         // $mail->AddEmbeddedImage('../img/chatStep.PNG','me');   
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
-        $mail->Port       = 587;
+        $mail->Port       = 2525;
 
         $mail->setFrom("stephanyemmitty@gmail.com",'Volunteer');
-        $mail->addAddress($to);
+        $mail->addAddress($email);
 
         $mail->isHTML(true);
         $mail->Subject = $subject;
@@ -149,6 +166,7 @@ function MyMailer($subject,$to,$message){
             echo "sent";
         }
     }catch(Exception $e){
+        echo $e;
         echo 'Oops something went wrong! please try again';
     }
 

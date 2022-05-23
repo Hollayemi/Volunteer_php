@@ -25,7 +25,7 @@
             </div>
             <div class="bigSide">
                 <div class="dasboardTop">
-                    welcome,<?php echo $name ?>
+                    welcome, <?php echo $name ?>
                 </div>
                 <div class="dashboard-content">
                     <div class="myCard">

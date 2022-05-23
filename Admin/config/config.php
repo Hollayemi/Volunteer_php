@@ -21,6 +21,10 @@
             $name     =   explode(' ',$myInfo['fullname'])[0];
         }
 
+        if(!$myInfo){
+            header('Location:../config/expire.php');
+        }
+
         function allUsers($conn)
         {
             $sql="SELECT * FROM auth";

@@ -191,19 +191,31 @@
     display: flex;
     justify-content: center;
 }
+@media screen and (max-width:500px) {
+    .myTable{
+        justify-content: start;
+    }
+}
 table {
     width:100%;
-    max-width:600px;
+    max-width:700px;
     overflow: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid rgb(200, 234, 255);
     border-collapse: collapse;
+    min-width: 100px;
 }
 th, td {
     padding: 5px;
     text-align: left;
+}
+.funcTD{
+    min-width:300px;
+}
+a{
+    text-decoration: none;
 }
 table#t01 tr:nth-child(even) {
     background-color: #eee;
@@ -212,6 +224,17 @@ table#t01 tr:nth-child(odd) {
    background-color:#fff;
 }
 table#t01 th	{
-    background-color: black;
+    background-color: rgb(33, 55, 255);
     color: white;
+}
+.tableButton{
+    background-color: rgb(28, 85, 255);
+    color: rgb(255, 255, 255);
+    width:120px;
+    height:36px;
+    border:none;
+    margin:0px 5px;
+}
+.tableButton_deactivated{
+    background-color: rgb(126, 128, 169);
 }
