@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="../font-awesome.min.css">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' rel='stylesheet'>
     <title>Volunteer Dashboard</title>
 </head>
 <body>
@@ -19,8 +20,7 @@
             <div class="smallSide">
                 <img src="avatar2.png" alt="">
                 <div class="bottom">
-                    <i class="fa fa-cog" id="dropMenu">o</i>
-                    <a href="../config/expire.php" class="bottom">Logout</a>
+                    <i class="fa fa-cog" id="dropMenu"></i>
                 </div>
             </div>
             <div class="bigSide">
@@ -66,6 +66,7 @@
                     <br>
                     <li id="editButton">Add new admin</li>
                     <li id="deleteButton">Delete admin</li>
+                    <a href="../config/expire.php" class="bottom">Logout</a>
                 </ul>
                 <div class="Submitted">
                     <h5>Successfully changed</h5>
